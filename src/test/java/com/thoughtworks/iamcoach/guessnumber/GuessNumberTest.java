@@ -14,20 +14,20 @@ import static org.mockito.Mockito.when;
 public class GuessNumberTest {
     @Test
     public void integration_test() {
-        ProduceNumber produceNumber = mock(ProduceNumber.class);
-        when(produceNumber.getNumber()).thenReturn("1234");
+        RandomNumber randomNumber = mock(RandomNumber.class);
+        when(randomNumber.get()).thenReturn("1234");
 
-        GuessNumber guessNumber = new GuessNumber();
-        assertThat(guessNumber.compare(produceNumber.getNumber(), "5678")).isEqualTo("0A0B");
-        assertThat(guessNumber.compare(produceNumber.getNumber(), "4321")).isEqualTo("0A4B");
-        assertThat(guessNumber.compare(produceNumber.getNumber(), "1324")).isEqualTo("2A2B");
-        assertThat(guessNumber.compare(produceNumber.getNumber(), "1234")).isEqualTo("4A0B");
+        CompareNumber compareNumber = new CompareNumber();
+        assertThat(compareNumber.compare(randomNumber.get(), "5678")).isEqualTo("0A0B");
+        assertThat(compareNumber.compare(randomNumber.get(), "4321")).isEqualTo("0A4B");
+        assertThat(compareNumber.compare(randomNumber.get(), "1324")).isEqualTo("2A2B");
+        assertThat(compareNumber.compare(randomNumber.get(), "1234")).isEqualTo("4A0B");
     }
 
     @Test
     public void test_random() {
-        ProduceNumber produceNumber = new ProduceNumber();
-        String Guess1 = produceNumber.getNumber();
+        RandomNumber randomNumber = new RandomNumber();
+        String Guess1 = randomNumber.get();
         //如果抛出异常，说明返回的值不是int类型
         Boolean flag = true;
         for (int i = 0; i < 4; i++) {
@@ -40,7 +40,7 @@ public class GuessNumberTest {
         assertThat(flag).isEqualTo(true);
         //测试每一位都不重复
 
-        String Guess2 = produceNumber.getNumber();
+        String Guess2 = randomNumber.get();
         boolean random = true;
         if (Guess1.equals(Guess2)) {
             random = false;
@@ -54,11 +54,11 @@ public class GuessNumberTest {
 
     @Test
     public void match_test() {
-        GuessNumber guessNumber = new GuessNumber();
-        assertThat(guessNumber.compare("1234", "5678")).isEqualTo("0A0B");
-        assertThat(guessNumber.compare("1234", "4321")).isEqualTo("0A4B");
-        assertThat(guessNumber.compare("1234", "1324")).isEqualTo("2A2B");
-        assertThat(guessNumber.compare("1234", "1234")).isEqualTo("4A0B");
+        CompareNumber compareNumber = new CompareNumber();
+        assertThat(compareNumber.compare("1234", "5678")).isEqualTo("0A0B");
+        assertThat(compareNumber.compare("1234", "4321")).isEqualTo("0A4B");
+        assertThat(compareNumber.compare("1234", "1324")).isEqualTo("2A2B");
+        assertThat(compareNumber.compare("1234", "1234")).isEqualTo("4A0B");
     }
 
 }

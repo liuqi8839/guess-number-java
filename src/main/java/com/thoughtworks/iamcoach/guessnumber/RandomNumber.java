@@ -3,8 +3,8 @@ package com.thoughtworks.iamcoach.guessnumber;
 /**
  * Created by apple on 14-10-15.
  */
-public class ProduceNumber {
-    public String getNumber() {
+public class RandomNumber {
+    public String get() {
         String Number = "";
         String newNum;
         for (int i = 0; i < 4; i++) {

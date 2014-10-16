@@ -1,11 +1,9 @@
 package com.thoughtworks.iamcoach.guessnumber;
 
-import java.io.InputStream;
-
 /**
  * Created by apple on 14-10-15.
  */
-public class GuessNumber {
+public class CompareNumber {
 
     public String compare(String guess, String input) {
         int countA = 0;
